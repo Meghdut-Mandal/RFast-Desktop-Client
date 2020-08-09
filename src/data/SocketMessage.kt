@@ -14,7 +14,7 @@ fun Any.toSocketMessage(code: Int): SocketMessage {
 }
 
 
- val gson = Gson()
+val gson = Gson()
 
 class MessageHandler<T : Any>(private val classT: Class<T>, val handler: (T) -> Unit) {
     fun handle(jsonData: String) {
@@ -25,6 +25,7 @@ class MessageHandler<T : Any>(private val classT: Class<T>, val handler: (T) -> 
 
 object SocketMessageRouter {
     const val DEVICE_INFO_HANDLER = 2323
+    const val DESKTOP_INFO_HANDLER = 18238
     val codeMap = hashMapOf<Int, (String) -> Unit>()
 
     inline fun <reified T> addHandler(code: Int, noinline handler: (T) -> Unit) {
